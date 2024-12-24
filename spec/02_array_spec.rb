@@ -5,7 +5,7 @@ describe Array do
   # group is a class. The 'subject' will be an instance of that class.
   # https://rspec.info/features/3-12/rspec-core/subject/implicit-subject/
 
-  # Note: Using an implicit subject is not recommended for most situations.
+  # NOTE: Using an implicit subject is not recommended for most situations.
   # The next lesson will cover explicit subjects, which are recommended over
   # implicit subjects.
 
@@ -15,7 +15,7 @@ describe Array do
     it 'is an Array' do
       expect(subject).to be_an(Array)
     end
-    
+
     # Below is one-line syntax that does the same as the above test.
     # Look at the doc string that is auto-generated when this test is run
     # (in a terminal window).
@@ -24,18 +24,18 @@ describe Array do
 
   context 'when using predicate matchers' do
     context 'when using the empty? predicate method' do
-      # A predicate method in Ruby ends with a ? and only returns true or false. 
+      # A predicate method in Ruby ends with a ? and only returns true or false.
       it 'returns true' do
         expect(subject.empty?).to eq true
       end
     end
-    
+
     # RSpec can leverage this to create predicate matchers for any predicate method.
     # https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/predicates/
     it 'is empty' do
       expect(subject).to be_empty
     end
-    
+
     # Below is one-line syntax that does the same as the above test.
     # Look at the doc string that is auto-generated when this test is run
     # (in a terminal window).
@@ -72,27 +72,29 @@ end
 describe Array do
   context 'when updating an implicit subject' do
     # remove the 'x' before running this test
-    xit 'is empty' do
-      # Write a test to expect the subject to be empty.
+    it 'is empty' do
+      expect(subject.empty?).to eq(true)
     end
 
     # remove the 'x' before running this test
-    xit 'updates length to 1' do
+    it 'updates length to 1' do
       # Update the implicit subject to make this test pass.
+      subject.push('thing')
       expect(subject.length).to eq(1)
     end
   end
 
   context 'when using one let variable on two tests' do
     # Make a let variable that will pass both tests.
+    let(:lucky_numbers) { [7, 13, 22] }
 
     # remove the 'x' before running this test
-    xit 'has length of 3' do
+    it 'has length of 3' do
       expect(lucky_numbers.length).to eq(3)
     end
 
     # remove the 'x' before running this test
-    xit 'has sum of 42' do
+    it 'has sum of 42' do
       expect(lucky_numbers.sum).to eq(42)
     end
   end
