@@ -70,9 +70,23 @@ describe MagicSeven do
   # Write a test for each of the following methods:
 
   describe '#subtract_four' do
+    context 'when the previous step is 11' do
+      it 'returns 7' do
+        previous_step = 11 # Arrange
+        result = game.subtract_four(previous_step) # Act
+        expect(result).to eq(7) # Assert
+      end
+    end
   end
 
   describe '#divide_by_two' do
+    context 'when previous step is 22' do
+      it 'returns 11' do
+        arrange = 22
+        act = game.divide_by_two(arrange)
+        expect(act).to eq(11)
+      end
+    end
   end
 
   # The following tests will need you to create new instances of MagicSeven with
@@ -83,21 +97,27 @@ describe MagicSeven do
   # The #play method will always return seven! Test this game, using any
   # integer as the random_number. Update the context with the number.
   describe '#play' do
-    context 'when the random number is ...' do
+    subject(:game1) { described_class.new(12) }
+    subject(:game2) { described_class.new(33) }
+    subject(:game3) { described_class.new(666) }
+    context 'when the random number is 12' do
       # remove the 'x' before running this test
-      xit 'will return 7' do
+      it 'will return 7' do
+        expect(game1.play).to be(7)
       end
     end
 
-    context 'when the random number is ...' do
+    context 'when the random number is 33' do
       # remove the 'x' before running this test
-      xit 'will return 7' do
+      it 'will return 7' do
+        expect(game2.play).to be(7)
       end
     end
 
-    context 'when the random number is ...' do
+    context 'when the random number is 666' do
       # remove the 'x' before running this test
-      xit 'will return 7' do
+      it 'will return 7' do
+        expect(game3.play).to be(7)
       end
     end
   end
